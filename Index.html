@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Salty - Travel Website</title>
+        <style>
+            *{
+                margin:0;
+                padding:0;
+                box-sizing: border-box;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            body{
+                background:#f8f6e9;
+                color:#292929;
+            }
+            .container{
+                width:90%;
+                max-width:1150px;
+                margin:auto;
+            }
+
+            /* NAVBAR */
+            nav{
+                height:75px;
+                display:flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .logo{
+                font-size: 20px;
+                font-weight: bold;
+            }
+            .logo span{
+                font-size: 13px;
+            }
+            .nav-links{
+                font-size: 13px;
+            }
+            .nav-links{
+                display:flex;
+                gap:35px;
+                list-style: none;
+            }
+            .nav-links a{
+                text-decoration: none;
+                color:#555;
+                font-size: 13px;
+            }
+            .book-btn{
+                border:1px solid #e4a48a;
+                border-radius:25px;
+                padding:10px 20px;
+                color:#d7795e;
+                background: transparent;
+            }
+
+            /* HERO */
+            .hero{
+                min-height: 390px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .hero-text{
+                width:50%;
+            }
+            .hero-text h1{
+                font-size: 55px;
+                line-height:1.05;
+                margin-bottom: 20px;
+            }
+            .hero-text p{
+                color:#777;
+                line-height: 1.6;
+                max-width: 430px;
+                font-size: 14px;
+            }
+            .search-box{
+                background: white;
+                width:450px;
+                margin-top: 30px;
+                padding:13px;
+                border-radius: 35px;
+                display:flex;
+                align-items: center;
+                box-shadow: 0 8px 25px rgba(0,0,0,.05);
+            }
+            .search-item{
+                flex:1;
+                padding-left: 15px;
+            }
+            .search-item small{
+                color:#999;
+                display: block;
+            }
+            .search-item strong{
+                font-size: 13px;
+            }
+            .search-button{
+                width:42px;
+                height:42px;
+                border-radius: 50%;
+                border:none;
+                background:#ee7559;
+                color:white;
+            }
+            .hero-image{
+                width:42%;
+                text-align: center;
+            }
+            .hero-image img{
+                width:390px;
+                max-width: 100%;
+                /* border-radius: 50%; */
+            }
+
+            /* SECTION TITLE */
+            .section-title{
+                margin-bottom: 30px;
+            }
+            .section-title h2{
+                font-size: 30px;
+                margin-bottom: 10px;
+            }
+            .section-title p{
+                color:#888;
+                font-size: 12px;
+                max-width:350px;
+            }
+
+            /* CATEGORIES */
+            .categories{
+                padding:45px 0;
+            }
+            .category-list{
+                display:flex;
+                justify-content: space-between;
+                gap:20px;
+            }
+            .category{
+                text-align: center;
+                min-width: 90px;
+            }
+            .category img{
+                width:85px;
+                height:85px;
+                border-radius:50%;
+                object-fit: cover;
+            }
+            .category p{
+                margin-top: 10px;
+                font-size: 13px;
+            }
+
+            /* EXPERIENCE */
+
+            .experience{
+                padding:70px 0;
+                display:flex;
+                align-items: center;
+                gap:80px;
+            }
+            .experience-image{
+                width:45%;
+                text-align: center;
+            }
+            .experience-image img{
+                width:320px;
+                max-width: 100%;
+                /* border-radius: 50%; */
+            }
+            .experience-content{
+                flex:1;
+            }
+            .small-title{
+                color:#df9274;
+                letter-spacing: 3px;
+                font-size: 11px;
+                margin-bottom: 10px;
+            }
+            .experience-content h2{
+                font-size: 32px;
+                margin-bottom: 15px;
+            }
+            .experience-content p{
+                color:#777;
+                line-height: 1.6;
+                font-size: 13px;
+            }
+            .stats{
+                display:flex;
+                gap:25px;
+                margin-top: 30px;
+            }
+            .stat h3{
+                font-size: 25px;
+                color:#db8065;
+            }
+            .stat span{
+                font-size: 11px;
+                color:#888;
+            }
+
+            /* POPULAR */
+
+            .popular{
+                padding:50px 0;
+            }
+            .cards{
+                display:flex;
+                gap:22px;
+                overflow:hidden;
+            }
+            .card{
+                min-width:245px;
+                background:white;
+                border-radius: 10px;
+                overflow:hidden;
+                box-shadow: 0 5px 20px rgba(0,0,0,.04);
+            }
+            .card img{
+                width:100%;
+                height:145px;
+                object-fit: cover;
+            }
+            .card-content{
+                padding:15px;
+            }
+            .card-content h3{
+                font-size: 15px;
+            }
+            .card-content p{
+                color:#888;
+                font-size: 11px;
+                margin:7px 0;
+            }
+            .price{
+                font-weight: bold;
+                font-size: 13px;
+            }
+            .card button{
+                float:right;
+                border:1px solid #ccc;
+                background: white;
+                border-radius: 15px;
+                padding:5px 12px;
+                font-size: 9px;
+            }
+
+            /* TOP DESTINATIONS */
+
+            .destinations{
+                padding:65px 0;
+            }
+            .destinations-grid{
+                display:grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: 180px 180px;
+                gap: 15px;
+            }
+            .destination{
+                position: relative;
+                overflow:hidden;
+                border-radius: 10px;
+            }
+            .destination img{
+                width:100%;
+                height:100%;
+                object-fit: cover;
+            }
+            .destination .overlay{
+                position:absolute;
+                bottom:0;
+                left:0;
+                right:0;
+                padding:15px;
+                color:white;
+                background: linear-gradient(transparent, rgba(0,0,0,.77));
+            }
+            .destination h3{
+                font-size: 13px;
+            }
+            .destination p{
+                font-size: 9px;
+            }
+
+            /* TESTIMONIAL */
+
+            .testimonial{
+                padding:70px 0;
+                display: flex;
+                align-items: center;
+                gap:70px;
+            }
+            .customer-image{
+                width:45%;
+                text-align: center;
+            }
+            .customer-image img{
+                width:300px;
+                height:300px;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+            .review{
+                flex:1;
+                background: white;
+                padding:25px;
+                border-radius: 8px;
+            }
+            .review h2{
+                font-size:30px;
+                margin-bottom: 20px;
+            }
+            .review p{
+                color:#777;
+                line-height: 1.7;
+                font-size: 13px;
+            }
+            .reviewer{
+                margin-top: 20PX;
+                font-weight: bold;
+            }
+
+            /* NEWSLETTER */
+
+            .newsletter{
+                background: #ffd783;
+                border-radius: 15px;
+                padding: 45px;
+                text-align: center;
+                margin:40px 0 70px;
+            }
+            .newsletter h2{
+                margin-bottom: 10px;
+            }
+            .newsletter p{
+                font-size: 11px;
+                color:#765;
+            }
+            .newsletter input{
+                margin-top: 20px;
+                width:350px;
+                max-width: 90%;
+                padding:14px 20px;
+                border:none;
+                border-radius: 25px;
+                outline:none;
+            }
+
+            /* FOOTER */
+
+            footer{
+                border-top: 1PX solid #eee5cf;
+                padding:40px 0;
+            }
+            .footer-content{
+                display:grid;
+                grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+                gap:30px;
+            }
+            .footer-column h3{
+                margin-bottom:15px;
+                font-size: 14px;
+            }
+            .footer-column p,
+            .footer-column a{
+                display: block;
+                color:#888;
+                font-size: 11px;
+                text-decoration: none;
+                margin:9px 0;
+            }
+
+            /* MOBILE */
+            @media(max-width:768px){
+
+                .nav-links{
+                    display:none;
+                }
+                .hero{
+                    flex-direction: column;
+                    text-align: center;
+                    padding:50px 0;
+                }
+                .hero-text{
+                    width:100%;
+                }
+                .hero-text h1{
+                    font-size: 42px;
+                }
+                .search-box{
+                    width:100%;
+                }
+                .hero-image{
+                    width:80%;
+                    margin-top: 30px;
+                }
+                .category-list{
+                    overflow-x: auto;
+                    justify-content: flex-start;
+                }
+
+                .experience,
+                .testimonial{
+                    flex-direction: column;
+                    gap:30px;
+                    text-align: center;
+                }
+                .experience-image,
+                .customer-image{
+                    width:100%;
+                }
+                .stats{
+                    justify-content: center;
+                }
+                .destinations-grid{
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-rows: repeat(3,160px);
+                }
+                .footer-content{
+                    grid-template-columns: 1fr 1fr;
+                }
+            }
+        </style>
+    </head> 
+    <body>
+        <div class="container">
+
+            <!-- NAVBAR -->
+             <nav>
+                <div class="logo">Salty</div>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Destinations</a></li>
+                    <li><a href="#">Tours</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+                <button class="book-btn">Book Now</button>
+             </nav>
+
+             <!-- HERO -->
+              <Section class="hero">
+                <div class="hero-text">
+                    <h1>Discover<br>The Best Lovely<br>Places</h1>
+                    <p>
+                        Plan and book your perfect trip with expert advice,
+                        travel trips,destination inspiration and inspiration from us.
+                    </p>
+                    <div class="search-box">
+                        <div class="search-item">
+                            <small>Where</small>
+                            <strong>Center Point,Namakkal</strong>
+                        </div>
+                        <div class="search-item">
+                            <small>Date</small>
+                            <strong>20 Sep 2026</strong>
+                        </div>
+                        <button class="search-button"></button>
+                        </div>
+                        </div>
+                        <div class="hero-image">
+                            <img src="image/Image (2).png" alt=" ">
+                        </div>
+                        </Section>
+
+                        <!-- CATEGORIES -->
+                         <section class="categories">
+
+                            <div class="section-title">
+                                <h2>Categories</h2>
+                                <p>
+                                    Here are lots of interesting destinations
+                                     to visit,but don't be confused - they're already
+                                     grouped
+                                     by category.
+                                </p>
+                                    </div>
+                                    <div class="category-list">
+                                        <div class="category">
+                                        <img src="image/Beach (4).png" alt=" ">
+                                        <p>Beach</p>
+                                    </div>
+                                    <div class="category">
+                                        <img src="image/Rectangle 4407.png" alt=" ">
+                                        <p>Desert</p>
+                                    </div>
+                                    <div class="category">
+                                        <img src="image/Rectangle 4408 (1).png" alt=" ">
+                                        <p>Mountain</p>
+                                    </div>
+                                    <div class="category">
+                                        <img src="image/Rectangle 4409.png" alt=" ">
+                                        <p>Temple</p>
+                                    </div>
+                                    <div class="category">
+                                        <img src="image/Tower.png" alt=" ">
+                                        <p>Tower</p>
+                                    </div>
+                                    <div class="category">
+                                        <img src="image/Rectangle 4411.png" alt=" ">
+                                        <p>Pyramid</p>
+                                    </div>
+                            </div>
+                         </section>
+
+                         <!-- EXPERIENCE -->
+                          <section class="experience">
+                            <div class="experience-image">
+                                <img src="image/Images.png" alt=" ">
+                            </div>
+                            <div class="experience-content">
+                                <div class="small-title">OUR EXPERIENCE</div>
+                                <h2>Our Stories Have Adventures</h2>
+                                <P>
+                                    We are experienced in bringing Adventures to your
+                                    doorstep.
+                                    With years of experience in travel, we know  how to 
+                                    make your journey special.
+                                </P>
+                                <div class="stats">
+                                    <div class="stat">
+                                        <h3>12K+</h3>
+                                        <span>Succes<br>Journey</span>
+                                    </div>
+                                    <div class="stat">
+                                        <h3>16+</h3>
+                                        <span>Awards<br>Winning</span>
+                                    </div>
+                                    <div class="stat">
+                                        <h3>20+</h3>
+                                        <span>Years Of<br>Experience</span>
+                                    </div>
+                                </div>
+                                </div>
+                                </section>
+
+                                <!-- POPULAR DESTINATIONS -->
+                                 <section class="popular">
+                                    <div class="section-title">
+                                        <h2>Find Popular Destination</h2>
+                                    </div>
+                                    <div class="cards">
+                                        <div class="card">
+                                            <img src="image/image (3).png" alt=" ">
+                                            <div class="card-content">
+                                                <h3>Mountain Hiking Tour</h3>
+                                                <p>Mountain Hiking Tour</p>
+                                                <span class="price">$89 /Person</span>
+                                                <button>Book Now</button>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <img src="image/image (4).png" alt=" ">
+                                            <div class="card-content">
+                                                <h3>Machu Picchu, Peru</h3>
+                                                <p>Machu Picchu, Peru </p>
+                                                <span class="price">$99 /Person</span>
+                                                <button>Book Now</button>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <img src="image/image (5).png" alt=" ">
+                                            <div class="card-content">
+                                                <h3>The Grand Canyon, Arizona</h3>
+                                                    <p>Mountain Hiking Tour</p>
+                                                    <span class="price">$70/Person</span>
+                                                    <button>Book Now</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 </section>
+
+                                 <!-- TOP DESTINATIONS -->
+                                  <section class="destinations">
+                                    <div class="section-title">
+                                        <h2>Top Destinations</h2>
+                                        <p>Best destinationss for your next trips</p>
+                                    </div>
+
+                                    <div class="destinations-grid">
+                                        <div class="destination">
+                                            <img src="image/Card 01.png" alt=" ">
+                                            <div class="overlay">
+                                                <h3>Vietnam</h3>
+                                                <p>Worefall</p>
+                                            </div>
+                                            </div>
+                                            <div class="destination">
+                                                <img src="image/Group.png" alt=" ">
+                                                <div class="overlay">
+                                                    <h3>Vietnam</h3>
+                                                    <p>Worefall</p>
+                                                </div>
+                                            </div>
+                                            <div class="destination">
+                                                <img src="image/Rectangle 4391.png" alt=" ">
+                                                <div class="overlay">
+                                                    <h3>Vietnam</h3>
+                                                    <p>Worefall</p>
+                                                </div>
+                                            </div>
+                                            <div class="destination">
+                                                <img src="image/Rectangle 4392.png" alt=" ">
+                                                <div class="overlay">
+                                                    <h3>Vietnam</h3>
+                                                    <p>Worefall</p>
+                                                </div>
+                                            </div>
+                                            <div class="destination">
+                                                <img src="image/Rectangle 4394.png" alt=" ">
+                                                <div class="overlay">
+                                                    <h3>Vietnam</h3>
+                                                    <p>Worefall</p>
+                                                </div>
+                                            </div>
+                                            <div class="destination">
+                                                <img src="image/Rectangle 4395.png" alt=" ">
+                                                <div class="overlay">
+                                                    <div class="overlay">
+                                                        <h3>Vietnam</h3>
+                                                        <p>Worefall</p>
+                                                </div>
+                                                </div>
+                                                </div>
+                                             </section>
+
+                                             <!-- CUSTOMER REVIEEW -->
+
+                                             <section class="testimonial">
+                                                <div class="customer-image"> 
+                                                    <img src="image/Images (1).png" alt=" ">
+                                                    </div>
+                                                    <div class="review">
+                                                        <h2>A Customer said<br>About Us:</h2>
+                                                        <p>Salty helped me a lot in findingg the best place for our
+                                                            first outdoor adventure trip. They responded very
+                                                            quickly and gave me a detailed account of the place--
+                                                            its history, as well its best features.
+                                                        </p>
+                                                    <div class="reviewer">
+                                                        Andrew Sarma
+                                                        <p>Enterpreneur</p>
+                                                    </div>
+                                                </div>
+                                             </section>
+
+                                             <!-- NEWSLETTER -->
+
+                                             <section class="newsletter">
+                                                <h2>Sign up to our newletter</h2>
+                                                <p>Receiv latest news,update,and many other things every week.</p>
+                                                <input type="email" placeholder="Enter your email address">
+                                             </section>
+
+                                             <!-- FOOTER -->
+
+                                             <footer>
+                                                <div class="footer-content">
+                                                    <div class="footer-column">
+                                                        <h3>Salty</h3>
+                                                        <p>Enjoy the touring with salty</p>
+                                                    </div>
+
+                                                    <div class="footer-column">
+                                                        <h3>Resouces</h3>
+                                                        <a href="#">Download</a>
+                                                        <a href="#">Help Center</a>
+                                                        <a href="#">Guide Book</a>
+                                                        <a href="#">App Directory</a>
+                                                    </div>
+                                                    <div class="footer-column">
+                                                        <h3>Travellers</h3>
+                                                        <a href="#">Why Travellers</a>
+                                                        <a href="#">Enterprice</a>
+                                                        <a href="#">Customer Stories</a>
+                                                        <a href="#">Instagram post</a>
+                                                    </div>
+                                                    <div class="footer-column">
+                                                        <h3>Company</h3>
+                                                        <a href="#">Travelling</a>
+                                                        <a href="#">About Locato</a>
+                                                        <a href="#">Success</a>
+                                                        <a href="#">Information</a>
+                                                    </div>
+                                                    <div class="footer-column">
+                                                        <h3>Get App</h3>
+                                                        <a href="#">App Store</a>
+                                                        <a href="#">Google Play Store</a>
+                                                    </div>
+                                                    </div>
+                                                    </footer>
+                                                    </div>
+                                                    </body>
+                                                    </html>
+
